@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Ball Bouncing using Vue transition and CSS Animation</title>
+  <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <div id="app">
+  <h3>Bounce the Ball!</h3>
+  <button @click="toggleShow">
+    <span v-if="isShowing">Get it gone!</span>
+    <span v-else>Here we go!</span>
+  </button>
+  <transition
+    name="ballmove"
+    enter-active-class="bouncein"
+    leave-active-class="rollout">
+  <div v-if="isShowing">
+    <app-child class="child"></app-child>
+  </div>
+  </transition>
+</div>
+
+<script type="text/x-template" id="childarea">
+  <div class="ball"></div>
+</script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
