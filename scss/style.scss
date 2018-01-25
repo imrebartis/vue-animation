@@ -1,28 +1,14 @@
-@mixin ballb($yaxis: 0) {
-  transform: translate3d(0, $yaxis, 0);
-}
-
 body {
   font-family: 'Bitter', serif;
-  width: 100vw;
-  height: 100vh;
-  background: #eeeeee; /* Old browsers */
-  background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 65%, #eeeeee 99%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #eeeeee 0%,#cccccc 65%,#eeeeee 99%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, #eeeeee 0%,#cccccc 65%,#eeeeee 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
+  background: #333;
+  color: white;
 }
 
 #app {
   text-align: center;
   margin: 60px;
-  max-width: 320px;
   margin: 0 auto;
   display: table;
-}
-
-.num {
-  color: #AF007E;
 }
 
 button {
@@ -37,57 +23,61 @@ button {
   cursor: pointer;
 }
 
+.img-contain {
+  width: 250px;
+  height: 160px;
+  overflow: hidden;
+}
+
+img {
+  width: 100%;
+  transform-origin: 50% 50%;
+  cursor: pointer;
+  transform: scaleY(1) translateZ(0);
+  margin: 5px;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.img-contain:hover .overlay {
+  opacity: 1;
+  background: hsla(50, 0%, 0%, 0.6);
+  transition: 0.3s opacity ease-out;
+}
+
+.img-contain .overlay {
+  position: absolute;
+  z-index: 1000;
+  display: block;
+  width: 245px;
+  height: 155px;
+  margin: 5px;
+  opacity: 0;
+  overflow: hidden;
+  transition: 0.3s opacity ease-in;
+}
+
+.overlay-text {
+  margin-top: 40px;
+}
+
 h4 {
   margin: 0 0 15px;
 }
 
-hr {
-  border-color: #F2FAFF;
-  opacity: 0.5;
-  margin: 15px 0;
+.flip-enter-active {
+  transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53); //ease-in-quad
 }
 
-.ball {
-  width: 60px;
-  height: 60px;
-  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/soccerball.svg");
-  transform-origin: 50% 50%;
-  transform: translate3d(0, 300px, 0) rotate(0);
+.flip-leave-active {
+  transition: all .25s cubic-bezier(0.25, 0.46, 0.45, 0.94); //ease-out-quad
 }
 
-@keyframes bouncein { 
-  1% { @include ballb(-400px); }
-  20%, 40%, 60%, 80%, 95%, 99%, 100% { @include ballb() }
-  30% { @include ballb(-80px); }
-  50% { @include ballb(-40px); }
-  70% { @include ballb(-30px); }
-  90% { @include ballb(-15px); }
-  97% { @include ballb(-10px); }
-}
-
-@keyframes rollout { 
-  0% { transform: translate3d(0, 300px, 0); }
-  100% { transform: translate3d(1000px, 300px, 0); }
-}
-
-@keyframes ballroll {
-  0% { transform: rotate(0); }
-  100% { transform: rotate(1000deg); }
-}
-
-.ballmove-enter {
-  @include ballb(-400px);
-}
-
-.bouncein { 
-  animation: bouncein 0.9s cubic-bezier(0.47, 0, 0.745, 0.715) both;
-}
-
-.rollout { 
-  width: 60px;
-  height: 60px;
-  animation: rollout 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) both; 
-  div {
-    animation: ballroll 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) both; 
-  }
+.flip-enter, .flip-leave-to {
+  transform: scaleY(0) translateZ(0);
+  opacity: 0;
 }

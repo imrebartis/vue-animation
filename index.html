@@ -3,8 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Ball Bouncing using Vue transition and CSS Animation</title>
+  <title>Vue in-out modes</title>
   <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
   
@@ -16,25 +17,38 @@
 <body>
 
   <div id="app">
-  <h3>Bounce the Ball!</h3>
-  <button @click="toggleShow">
-    <span v-if="isShowing">Get it gone!</span>
-    <span v-else>Here we go!</span>
-  </button>
-  <transition
-    name="ballmove"
-    enter-active-class="bouncein"
-    leave-active-class="rollout">
-  <div v-if="isShowing">
-    <app-child class="child"></app-child>
-  </div>
-  </transition>
+  <h3>Hover us.</h3>
+  <main>
+    <app-child>
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/cartoonvideo2.jpg" />
+    </app-child>
+  <app-child>
+    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/cartoonvideo13.jpg" />
+  </app-child>
+  <app-child>
+    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/cartoonvideo14.jpeg" />
+  </app-child>
+  <app-child>
+    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/cartoonvideo5.jpg" />
+  </app-child>
+  </main>
 </div>
 
 <script type="text/x-template" id="childarea">
-  <div class="ball"></div>
+  <div class="img-contain">
+  	<div class="overlay">
+    	<p class="overlay-text">I don't like this one</p>
+      <button @click="toggleShow">Replace!</button>
+    </div>
+    <!-- In-out: The current element waits until the new element is done transitioning in to fire
+    Out-in: The current element transitions out and then the new element transitions in. -->
+    <transition name="flip" mode="out-in">
+      <slot v-if="!isShowing"></slot>
+      <img v-else src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/cartoonvideo14.jpeg" />
+    </transition>
+  </div>
 </script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js'></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js'></script>
 
   
 

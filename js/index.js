@@ -1,5 +1,11 @@
 var Child = {
-  template: '#childarea'
+  template: '#childarea',
+  props: ['isShowing'],
+  methods: {
+    toggleShow: function toggleShow() {
+      this.isShowing = !this.isShowing;
+    }
+  }
 };
 
 new Vue({
@@ -10,11 +16,6 @@ new Vue({
     };
   },
 
-  methods: {
-    toggleShow: function toggleShow() {
-      this.isShowing = !this.isShowing;
-    }
-  },
   components: {
     appChild: Child
   }
