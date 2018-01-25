@@ -1,60 +1,58 @@
 body {
-  background: #d1d3d4;
-  font-family: 'Bitter', serif;
+  background: #92278f;
 }
 
-.container {
+.notifier-svg {
+  max-width: 1300px;
   margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 500px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  display: table;
 }
 
-.books {
-  width: 500px;
+#app {
+  font-family: 'Titillium Web', sans-serif;
 }
 
-.booktext {
-  white-space: pre-line;
-  word-break: break-all;
-  position: absolute;
-  font-size: 14px;
-  width: 80px;
-  height: 110px;
-  -webkit-transform: translate(-35px, 180px) skew(-7deg) rotate(-5deg);
-          transform: translate(-35px, 180px) skew(-7deg) rotate(-5deg);
+.press {
+  visibility: hidden;
 }
 
-.submit {
-  color: white;
-  border-radius: 3px;
-  border: none;
-  padding: 6px 8px;
-  width: 100%;
-  background: #AC2E3A;
+.fadeout-enter-active,
+.fadeout-leave-active {
+  -webkit-transition: opacity 0.25s;
+  transition: opacity 0.25s;
+}
+
+.fadeout-enter,
+.fadeout-leave-to {
+  opacity: 0;
+}
+
+#thx-button,
+#phonebutton {
   cursor: pointer;
-  outline: none;
 }
 
-h3 {
-  text-align: center;
+#wind {
+  -webkit-transform: translate(-20px, 59px);
+  transform: translate(-20px, 59px);
+  opacity: 0.9;
 }
 
-textarea {
-  color: #777;
-  border: none;
-  width: 80px;
-  padding: 5px 10px;
-  border-radius: 3px;
+#tornado {
+  -webkit-transform: translate(5px, 54px);
+  transform: translate(5px, 54px);
+}
+
+#rainbow {
+  -webkit-transform: translate(0px, 50px);
+  transform: translate(0px, 50px);
+}
+
+@media screen and (max-width: 700px) {
+  .notifier-svg {
+    width: 120vw;
+    height: 120vh;
+    margin-top: -120px;
+    margin-left: -50px;
+  }
 }
